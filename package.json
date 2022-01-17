@@ -1,0 +1,38 @@
+{
+  "name": "accumulate-js",
+  "version": "1.0.0",
+  "description": "JavaScript client for the Accumulate API",
+  "main": "dist/accumulate.cjs",
+  "type": "module",
+  "scripts": {
+    "test": "tap --no-coverage --reporter=specy -J --color",
+    "build:docs": "rm -rf docs && jsdoc lib/*.js -t ./node_modules/foodoc/template -d docs -r -e utf8 --readme README.md -c conf.json",
+    "generate:docs": "rm -rf docs && jsdoc lib/*.js -t ./node_modules/foodoc/template -d docs -r -e utf8 -c conf.json -R README.md",
+    "generate:types": "tsc",
+    "build:cjs": "esbuild lib/client.ts --format=cjs --platform=node --outfile=dist/accumulate.cjs",
+    "build:esm": "esbuild lib/client.ts --format=esm --platform=node --outfile=dist/accumulate.mjs",
+    "build:iife": "esbuild lib/client.ts --bundle --minify --sourcemap --target=chrome58,firefox57,safari11,edge16 --outfile=dist/accumulate.js",
+    "build": "npm run build:cjs && npm run build:esm && npm run build:iife && tsc",
+    "lint": "eslint --ext .js,.json lib/*.js",
+    "serve:docs": "rm -rf docs && npm run generate:docs && statikk docs --port 4242 --open"
+  },
+  "author": "hawyar",
+  "devDependencies": {
+    "@tsconfig/recommended": "^1.0.1",
+    "@typescript-eslint/eslint-plugin": "^5.9.1",
+    "@typescript-eslint/parser": "^5.9.1",
+    "esbuild": "^0.13.15",
+    "esbuild-node-externals": "^1.4.1",
+    "eslint": "^8.7.0",
+    "foodoc": "^0.0.9",
+    "jsdoc": "^3.6.7",
+    "pkg": "^5.3.1",
+    "statikk": "^2.1.1",
+    "tap": "^15.0.9",
+    "typescript": "^4.5.4"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "cross-fetch": "^3.1.4"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "extends": "@tsconfig/recommended/tsconfig.json",
+  "exclude": [
+    "node_modules",
+    "dist",
+    "test",
+    "docs"
+  ],
+  "compilerOptions": {
+    "lib": [
+      "esnext"
+    ],
+    "declaration": true,
+    "baseUrl": ".",
+    "declarationDir": "./types",
+    "emitDeclarationOnly": true
+  },
+  "include": [
+    "lib/client.ts",
+  ],
+}
