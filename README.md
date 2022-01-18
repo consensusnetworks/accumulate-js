@@ -1,6 +1,7 @@
 # accumulate-js
 
 ![tests](https://github.com/hawyar/accumulate-js/actions/workflows/test.yml/badge.svg)
+
 > Accumulate client for Node.js and browser
 
 ## Usage
@@ -17,12 +18,15 @@ const tx = await rpc.getTransaction(
 console.log(tx.from); // acc://7117c50f04f1254d56b704dc05298912deeb25dbc1d26ef6/ACME
 console.log(tx.type); // sendToken
 
-
-const txHistroy = await rpc.getTransaction(
-  "5e63152594a0627a1ecc5a168d3322888c0f23ef1c60cebd11a79244a5af4d08",
-);
+const txHistory = await rpc.getTransactionHistory({
+    url: "acc://7117c50f04f1254d56b704dc05298912deeb25dbc1d26ef6/ACME",
+    start: 0,
+    count: 10,
+ })
 
 console.log(txHistroy.total); // 1214289
+console.log(txHistroy.items); // 10 transactions
+
 ```
 
 ## Contributing
@@ -33,7 +37,7 @@ console.log(txHistroy.total); // 1214289
 npm run generate:docs
 ```
 
-and to preview docs locally 
+and to preview docs locally
 
 ```bash
 npm run serve:docs
@@ -45,7 +49,6 @@ Generate types from JSDoc
 npm run generate:types
 ```
 
-
 ### Testing
 
 ```bash
@@ -53,9 +56,7 @@ npm run test
 ```
 
 ### Build
+
 ```bash
 npm run build
 ```
-
-
-
