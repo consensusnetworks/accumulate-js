@@ -8,8 +8,20 @@ interface RpcRequest {
   params: { [key: string]: any };
 }
 
+interface RpcResponse{
+  jsonrpc: string;
+  result: any;
+  id: number;
+}
+
 
 type AccumulateUrl = `acc://${string}/`;
+
+interface TransactionHistoryRequest {
+  url: AccumulateUrl;
+  start: number;
+  count: number;
+}
 
 interface TransactionQueryResponse {
   jsonrpc: string;
@@ -112,6 +124,7 @@ class AccumulateClient implements Client {
   defaultHeaders: { [key: string]: string };
   fetch: typeof fetch;
   clientEnv: string;
+  retries: { [key: string]: number };
   constructor(clientEnv?: string) {
     this.version = 2;
     this.env = Env.Testnet;
@@ -123,6 +136,7 @@ class AccumulateClient implements Client {
     this.defaultHeaders = {
       "Content-Type": "application/json",
     };
+    this.retries = {};
     this.#validHost();
   }
 
@@ -137,6 +151,44 @@ class AccumulateClient implements Client {
         `https://${this.clientEnv}.accumulatenetwork.io/v${this.version}`;
     }
   }
+
+  async getTransactionHistory(txParam: TransactionHistoryRequest): Promise<RpcResponse> {
+
+    if (!txParam.url) {
+      throw new Error("Invalid url");
+    }
+
+    if (!txParam.start) {
+      txParam.start = 0;
+    }
+
+    if (!txParam.count) {
+      txParam.count = 10;
+    }
+
+    const body: RpcRequest = {
+      jsonrpc: "2.0",
+      id: this.genId(),
+      method: "query-tx-history",
+      params:  txParam
+    }
+
+    const response = await this.fetch(this.baseUrl, {
+      method: "POST",
+      headers: this.defaultHeaders,
+      body: JSON.stringify(body),
+    });
+
+    const json = await response.json();
+
+    if (json.error) {
+      throw new Error(json.error.message);
+    }
+
+    return json.result;
+  }
+
+
 
   async getTransaction(
     TxId: string | Uint8Array,
@@ -167,8 +219,9 @@ class AccumulateClient implements Client {
       throw new Error(json.error.message);
     }
 
-    return json;
+    return json.result;
   }
+
 }
 
 export function accumulateClient(net?: string): AccumulateClient {

@@ -1,7 +1,6 @@
 module.exports = {
     "env": {
         "browser": true,
-        "esnext": true,
         "node": true
     },
     "extends": [

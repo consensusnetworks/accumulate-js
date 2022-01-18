@@ -1,7 +1,7 @@
 import * as tap from 'tap'
 import { accumulateClient } from "../dist/accumulate.cjs";
 
-tap.test('Pass thru', async (t) => {
+tap.test('getTransaction', async (t) => {
 
   const rpc = accumulateClient("testnet");
   const tx = await rpc.getTransaction(
@@ -12,5 +12,21 @@ tap.test('Pass thru', async (t) => {
     console.error(tx);
   }
 
-  t.same(tx.result.type, "sendTokens");
+  t.same(tx.type, "sendTokens");
 });
+
+tap.test('getTransactionHistory', async (t) => {
+
+  const rpc = accumulateClient("testnet");
+  const txHistory = await rpc.getTransactionHistory({
+    url: "acc://7117c50f04f1254d56b704dc05298912deeb25dbc1d26ef6/ACME",
+    start: 0,
+    count: 10,
+  })
+
+  if (txHistory instanceof Error) {
+    console.error(txHistory);
+  }
+  t.same(txHistory.total, "1215265")
+});
+

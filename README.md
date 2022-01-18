@@ -5,22 +5,29 @@
 
 ## Usage
 
+**Note**: For now just clone the repository and run `npm i <path_to_clone_>`. Treat it as a local dependency until it is published to a registry.
+
 ```ts
 const rpc = accumulateClient("testnet");
 
 const tx = await rpc.getTransaction(
   "5e63152594a0627a1ecc5a168d3322888c0f23ef1c60cebd11a79244a5af4d08",
-);å
+);
 
-if (tx instanceof Error) {
-  console.error(tx);
-}
+console.log(tx.from); // acc://7117c50f04f1254d56b704dc05298912deeb25dbc1d26ef6/ACME
+console.log(tx.type); // sendToken
 
-console.log(tx.result.from); // acc://7117c50f04f1254d56b704dc05298912deeb25dbc1d26ef6/ACME
-console.log(tx.result.type); // sendToken
+
+const txHistroy = await rpc.getTransaction(
+  "5e63152594a0627a1ecc5a168d3322888c0f23ef1c60cebd11a79244a5af4d08",
+);
+
+console.log(txHistroy.total); // 1214289
 ```
 
-## Doc
+## Contributing
+
+### Doc
 
 ```bash
 npm run generate:docs
@@ -39,13 +46,13 @@ npm run generate:types
 ```
 
 
-## Testing
+### Testing
 
 ```bash
 npm run test
 ```
 
-## Build
+### Build
 ```bash
 npm run build
 ```

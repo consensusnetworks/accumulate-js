@@ -1,4 +1,15 @@
 import fetch from 'cross-fetch';
+interface RpcResponse {
+    jsonrpc: string;
+    result: any;
+    id: number;
+}
+declare type AccumulateUrl = `acc://${string}/`;
+interface TransactionHistoryRequest {
+    url: AccumulateUrl;
+    start: number;
+    count: number;
+}
 interface TransactionQueryResponse {
     jsonrpc: string;
     result: {
@@ -60,8 +71,12 @@ declare class AccumulateClient implements Client {
     };
     fetch: typeof fetch;
     clientEnv: string;
+    retries: {
+        [key: string]: number;
+    };
     constructor(clientEnv?: string);
     genId: () => number;
+    getTransactionHistory(txParam: TransactionHistoryRequest): Promise<RpcResponse>;
     getTransaction(TxId: string | Uint8Array): Promise<TransactionQueryResponse>;
 }
 export declare function accumulateClient(net?: string): AccumulateClient;

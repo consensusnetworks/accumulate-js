@@ -120,7 +120,37 @@ class AccumulateClient {
     this.defaultHeaders = {
       "Content-Type": "application/json"
     };
+    this.retries = {};
     __privateMethod(this, _validHost, validHost_fn).call(this);
+  }
+  getTransactionHistory(txParam) {
+    return __async(this, null, function* () {
+      if (!txParam.url) {
+        throw new Error("Invalid url");
+      }
+      if (!txParam.start) {
+        txParam.start = 0;
+      }
+      if (!txParam.count) {
+        txParam.count = 10;
+      }
+      const body = {
+        jsonrpc: "2.0",
+        id: this.genId(),
+        method: "query-tx-history",
+        params: txParam
+      };
+      const response = yield this.fetch(this.baseUrl, {
+        method: "POST",
+        headers: this.defaultHeaders,
+        body: JSON.stringify(body)
+      });
+      const json = yield response.json();
+      if (json.error) {
+        throw new Error(json.error.message);
+      }
+      return json.result;
+    });
   }
   getTransaction(TxId) {
     return __async(this, null, function* () {
@@ -145,7 +175,7 @@ class AccumulateClient {
       if (json.error) {
         throw new Error(json.error.message);
       }
-      return json;
+      return json.result;
     });
   }
 }
