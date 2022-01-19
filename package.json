@@ -15,7 +15,8 @@
     "build:iife": "esbuild lib/client.ts --bundle --minify --sourcemap --target=chrome58,firefox57,safari11,edge16 --outfile=dist/accumulate-browser.js",
     "build": "npm run build:cjs && npm run build:esm && npm run build:iife && npm run types",
     "docs": "rm -rf docs && jsdoc dist/accumulate.js -t ./node_modules/foodoc/template -d docs -r -e utf8 --readme README.md -c conf.json",
-    "serve:docs": "rm -rf docs && npm run docs && statikk docs --port 4242 --open"
+    "serve:docs": "rm -rf docs && npm run docs && statikk docs --port 4242 --open",
+    "prepare": "husky install"
   },
   "author": "hawyar",
   "devDependencies": {
@@ -27,6 +28,7 @@
     "esbuild-node-externals": "^1.4.1",
     "eslint": "^8.7.0",
     "foodoc": "^0.0.9",
+    "husky": "^7.0.4",
     "jsdoc": "^3.6.7",
     "pkg": "^5.3.1",
     "rollup": "^2.64.0",

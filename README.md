@@ -6,8 +6,11 @@
 
 ## Usage
 
-**Note**: For now just clone the repository and run `npm i <path_to_clone_>`. Treat it as a local dependency until it is published to a registry.
+```bash
+npm install @hawyar/accumulate-js@0.1.0
+```
 
+### Query
 ```js
 const rpc = accumulateClient("testnet");
 
@@ -24,7 +27,6 @@ const txHistory = await rpc.getTransactionHistory({
     count: 10,
  })
 
-console.log(txHistroy.total); // 1214289
 console.log(txHistroy.items); // 10 transactions
 
 ```
