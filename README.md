@@ -8,14 +8,14 @@
 
 **Note**: For now just clone the repository and run `npm i <path_to_clone_>`. Treat it as a local dependency until it is published to a registry.
 
-```ts
+```js
 const rpc = accumulateClient("testnet");
 
 const tx = await rpc.getTransaction(
   "5e63152594a0627a1ecc5a168d3322888c0f23ef1c60cebd11a79244a5af4d08",
 );
 
-console.log(tx.from); // acc://7117c50f04f1254d56b704dc05298912deeb25dbc1d26ef6/ACME
+console.log(tx.data.from); // acc://7117c50f04f1254d56b704dc05298912deeb25dbc1d26ef6/ACME
 console.log(tx.type); // sendToken
 
 const txHistory = await rpc.getTransactionHistory({

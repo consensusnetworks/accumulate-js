@@ -40,11 +40,12 @@
     "documentStore": {
       "store": {
         "index.html": [
-          "descript",
-          "here",
+          "accumul",
+          "api",
+          "client",
           "index",
-          "more",
-          "pkg",
+          "javascript",
+          "js",
           "readm"
         ],
         "global.html": [
@@ -57,26 +58,23 @@
     "tokenStore": {
       "root": {
         "docs": {},
-        "d": {
+        "a": {
           "docs": {},
-          "e": {
+          "c": {
             "docs": {},
-            "s": {
+            "c": {
               "docs": {},
-              "c": {
+              "u": {
                 "docs": {},
-                "r": {
+                "m": {
                   "docs": {},
-                  "i": {
+                  "u": {
                     "docs": {},
-                    "p": {
-                      "docs": {},
-                      "t": {
-                        "docs": {
-                          "index.html": {
-                            "ref": "index.html",
-                            "tf": 23.333333333333332
-                          }
+                    "l": {
+                      "docs": {
+                        "index.html": {
+                          "ref": "index.html",
+                          "tf": 317.5
                         }
                       }
                     }
@@ -85,44 +83,35 @@
               }
             }
           },
-          "o": {
+          "p": {
             "docs": {},
-            "c": {
-              "docs": {},
-              "u": {
-                "docs": {},
-                "m": {
-                  "docs": {},
-                  "e": {
-                    "docs": {},
-                    "n": {
-                      "docs": {},
-                      "t": {
-                        "docs": {
-                          "global.html": {
-                            "ref": "global.html",
-                            "tf": 35
-                          }
-                        }
-                      }
-                    }
-                  }
+            "i": {
+              "docs": {
+                "index.html": {
+                  "ref": "index.html",
+                  "tf": 17.5
                 }
               }
             }
           }
         },
-        "h": {
+        "c": {
           "docs": {},
-          "e": {
+          "l": {
             "docs": {},
-            "r": {
+            "i": {
               "docs": {},
               "e": {
-                "docs": {
-                  "index.html": {
-                    "ref": "index.html",
-                    "tf": 23.333333333333332
+                "docs": {},
+                "n": {
+                  "docs": {},
+                  "t": {
+                    "docs": {
+                      "index.html": {
+                        "ref": "index.html",
+                        "tf": 17.5
+                      }
+                    }
                   }
                 }
               }
@@ -149,33 +138,45 @@
             }
           }
         },
-        "m": {
+        "j": {
           "docs": {},
-          "o": {
+          "a": {
             "docs": {},
-            "r": {
+            "v": {
               "docs": {},
-              "e": {
-                "docs": {
-                  "index.html": {
-                    "ref": "index.html",
-                    "tf": 23.333333333333332
+              "a": {
+                "docs": {},
+                "s": {
+                  "docs": {},
+                  "c": {
+                    "docs": {},
+                    "r": {
+                      "docs": {},
+                      "i": {
+                        "docs": {},
+                        "p": {
+                          "docs": {},
+                          "t": {
+                            "docs": {
+                              "index.html": {
+                                "ref": "index.html",
+                                "tf": 17.5
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
                   }
                 }
               }
             }
-          }
-        },
-        "p": {
-          "docs": {},
-          "k": {
-            "docs": {},
-            "g": {
-              "docs": {
-                "index.html": {
-                  "ref": "index.html",
-                  "tf": 600
-                }
+          },
+          "s": {
+            "docs": {
+              "index.html": {
+                "ref": "index.html",
+                "tf": 300
               }
             }
           }
@@ -193,6 +194,35 @@
                     "index.html": {
                       "ref": "index.html",
                       "tf": 110
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "d": {
+          "docs": {},
+          "o": {
+            "docs": {},
+            "c": {
+              "docs": {},
+              "u": {
+                "docs": {},
+                "m": {
+                  "docs": {},
+                  "e": {
+                    "docs": {},
+                    "n": {
+                      "docs": {},
+                      "t": {
+                        "docs": {
+                          "global.html": {
+                            "ref": "global.html",
+                            "tf": 35
+                          }
+                        }
+                      }
                     }
                   }
                 }
@@ -224,16 +254,17 @@
           }
         }
       },
-      "length": 8
+      "length": 9
     },
     "corpusTokens": [
-      "descript",
+      "accumul",
+      "api",
+      "client",
       "document",
       "global",
-      "here",
       "index",
-      "more",
-      "pkg",
+      "javascript",
+      "js",
       "readm"
     ],
     "pipeline": [
@@ -246,11 +277,11 @@
     "index.html": {
       "id": "index.html",
       "kind": "readme",
-      "title": "My pkg",
+      "title": "accumulate-js",
       "longname": "index",
-      "name": "My pkg",
+      "name": "accumulate-js",
       "tags": "index",
-      "summary": "More description here",
+      "summary": "JavaScript client for the Accumulate API",
       "description": "",
       "body": ""
     },

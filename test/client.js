@@ -1,5 +1,5 @@
 import * as tap from 'tap'
-import { accumulateClient } from "../dist/accumulate.cjs";
+import { accumulateClient } from "../dist/accumulate.mjs";
 
 tap.test('getTransaction', async (t) => {
 
@@ -27,6 +27,6 @@ tap.test('getTransactionHistory', async (t) => {
   if (txHistory instanceof Error) {
     console.error(txHistory);
   }
-  t.same(txHistory.total, "1215265")
+  t.same(txHistory.count, 10);
 });
 

@@ -6,3 +6,4 @@ coverage
 .npmrc
 .env.*
 .idea
+xaccumulate
